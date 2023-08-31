@@ -1,6 +1,10 @@
 # file-server
 
-This is a simple - AND VERY INSECURE - fileserver.  Do not, under any circumstance, provide anyone other than yourself access to this script.  **Bad things will happen.**
+This is a simple - AND VERY INSECURE - fileserver.  
+
+Do not, under any circumstance, provide anyone other than yourself access to this script.  
+
+🚨 **Bad things will happen.** 🚨
 
 ## Usage
 
