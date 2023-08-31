@@ -14,18 +14,18 @@ server.on("connection", (client) => {
   client.write("Hello there!");
 
   client.on("data", (data) => {
+    // Clean off any leading or trailing spaces/newlines/etc.
     data = data.trim();
+
+    // Log what's happening to the server's console
     console.log("Message from client: ", data);
 
-    let file = data.split(' ').slice(1);
+    // We're expecting 'GET filename.ext' so just take the filename
+    let file = data.split(' ')[0];
     if (data.startsWith('GET')) {
-      getFile(client, file[0]);
+      fs.readFile(file, 'utf8', (err, content) => {
+        client.write(content);
+      });
     }
   });
 });
-
-const getFile = function (client, file) {
-  fs.readFile(file, 'utf8', (err, content) => {
-    client.write(content);
-  });
-}
