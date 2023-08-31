@@ -24,10 +24,12 @@ const client = net.createConnection({
 
 client.setEncoding("utf8"); 
 
+// When the server responds with a file, write it to the local folder on disk
 client.on("data", (data) => {
   fs.writeFile(localFileName, data, (err) => {
     process.exit();
   });
 });
 
+// Request the remote file provided on the command line
 client.write('GET ' + remoteFileName);
